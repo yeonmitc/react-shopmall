@@ -1,0 +1,33 @@
+/* ProductAll.css */
+.container {
+  width: 80vw;
+  margin: auto;
+  /* border: 1px solid red; */
+  margin-top: 30px;
+
+}
+
+.row {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1px; 
+  justify-content: flex-start; 
+}
+
+.col {
+  flex: 0 0 23%;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+/* Mobile media query */
+@media (max-width: 768px) {
+  .row{
+    flex-direction: column;
+  }
+  .col {
+    flex: 0 0 100%;
+    padding: 5px; 
+  }
+}

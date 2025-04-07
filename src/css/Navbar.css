@@ -1,0 +1,177 @@
+.navbar {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px;
+  justify-content: flex-end;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.nav-section img {
+  cursor: pointer;
+}
+
+.menu-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.menu-left {
+  flex: 1;
+}
+
+.menu-list {
+  display: flex;
+  gap: 30px;
+  flex: 2;
+  justify-content: center;
+}
+
+.menu-list li {
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.menu-list li::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background-color: #720808;
+  opacity: 0.5;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.menu-list li:hover::after {
+  width: 100%;
+}
+
+.menu-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+}
+
+.search-area input {
+  border: none;
+  font-size: 14px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 2rem;
+    
+  }
+
+  .menu-area {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    
+  }
+
+  .menu-left {
+    display: none;
+  }
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+
+  }
+
+  .menu-list:not(.active) {
+    display: none;
+  }
+
+  .menu-list li {
+    font-size: 1.4em;
+    padding: 10px 20px;
+    text-align: left;
+    text-align: center;
+    
+  }
+  .menu-list li:hover::after {
+    width: 0%;
+
+  }
+  .menu-list li:hover{
+    background-color: #cccccc8e;
+  }
+  .menu-right {
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+
+  }
+
+  .search-area {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .search-area input {
+    font-size: 2rem;
+    width: 80%;
+  }
+
+  .login-button {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+
+  .nav-section {
+    padding: 10px 0;
+  }
+
+  .nav-section img {
+    width: 80px;
+  }
+}
