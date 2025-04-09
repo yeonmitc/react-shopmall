@@ -8,7 +8,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState('');
 
   const getProductDetail = async () => {
-    let url = `https://my-json-server.typicode.com/InfraWhale/tech-practice/products/${id}`;
+    let url = `https://my-json-server.typicode.com/yeonmitc/jsondb/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
     setProduct(data);
