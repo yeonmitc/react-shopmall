@@ -23,6 +23,7 @@ time, mark, audio, video {
   font-family: 'Montserrat' , sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
+
 article,
 aside,
 details,
@@ -58,8 +59,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+button, a{
+  cursor: pointer;
+  border: none;
+}
 
 body{
   width: 100vw;
   height: 100vh;
 }
+

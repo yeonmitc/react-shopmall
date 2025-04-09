@@ -2,15 +2,26 @@
   width: 100%;
   font-family: Arial, sans-serif;
 }
-
-.login-button {
+.login-banner{
+  /* border: 1px solid red; */
   display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 10px;
+
   justify-content: flex-end;
 }
+.login-button {
+  font-size: 1em;
+  padding: 10px 30px;
+  transition: 0.2s;
+  background-color: white;
+}
+.login-button:hover{
+  color: #910303;
+}
+.login-button :nth-child(1){
+  padding-right: 10px;
+
+}
+
 
 .nav-section {
   display: flex;

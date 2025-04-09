@@ -1,31 +1,55 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faSearch, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'; // Added faBars for hamburger
+import { faSearch, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'; 
 import '../css/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
 
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(true); // Menu is visible by default
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const goToLogin = () => {
-    navigate('/login');
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const handleAuthClick = () => {
+    setAuthenticate(!authenticate);
+    // setAuthenticate(true);
+    console.log("authenticate=" + authenticate)
+    navigate(authenticate ? '/' : '/login');
+    setIsMenuOpen(false);
+  };
+
+  const goToHome = () => {
+    navigate('/'); 
+    setIsMenuOpen(false);
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <div className="navbar">
-      <div>
-        <div className="login-button" onClick={goToLogin}>
+      <div className="login-banner">
+      <button 
+          className="login-button" 
+          onClick={handleAuthClick}
+          aria-label={ authenticate ? "Logout" : "Login"}
+        >
           <FontAwesomeIcon icon={faUser} />
-          <div>로그인</div>
-        </div>
+          <span>{ authenticate ? '로그아웃' : '로그인'}</span>
+        </button>
+
       </div>
       <div>
         <div className="nav-section">
@@ -33,7 +57,7 @@ const Navbar = () => {
             width={100}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/800px-H%26M-Logo.svg.png"
             alt="H&M Logo"
-            onClick={() => navigate('/')}
+            onClick={goToHome}
           />
         </div>
       </div>
@@ -49,10 +73,14 @@ const Navbar = () => {
             <li key={idx}>{menu}</li>
           ))}
         </ul>
+        
         <div className="menu-right">
           <div className="search-area">
             <FontAwesomeIcon icon={faSearch} />
-            <input type="text" placeholder="제품 검색" />
+            <input type="text" placeholder="제품 검색" 
+            value={searchQuery}
+            onChange={handleSearch}
+            />
           </div>
         </div>
       </div>
