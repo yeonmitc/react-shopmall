@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import '../css/ProductAll.css'
-const ProductAll = () => {
+const ProductAll = ({authenticate}) => {
   const [productList, setProductList] = useState([]);
   const getProducts = async () => {
     let url = `https://my-json-server.typicode.com/yeonmitc/jsondb/products`
@@ -19,7 +19,7 @@ const ProductAll = () => {
         <div className='row'>
           {productList.map((menu) => (
             <div className='col'>
-              <ProductCard item={menu} />
+              <ProductCard item={menu} authenticate={authenticate}/>
             </div>
           ))}
         </div>

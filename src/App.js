@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
-import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,15 +11,12 @@ function App() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!authenticate) {
-      navigate('/');
-    }
   }, [authenticate, navigate]);
   return (
   <>
         <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
        <Routes>
-        <Route path="/" element={<ProductAll />} />
+        <Route path="/" element={<ProductAll authenticate={authenticate} />} />
         <Route path="/login" element={<Login setAuthenticate={setAuthenticate} />} />
         <Route path="/products/:id" element={ <PrivateRoute authenticate={authenticate}/> } />
       </Routes>
