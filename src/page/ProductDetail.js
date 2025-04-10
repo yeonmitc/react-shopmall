@@ -24,6 +24,7 @@ const ProductDetail = () => {
     setSelectedSize(e.target.value);
   };
 
+
   return (
     <>{!loading ? <div className="spinner"></div> :
     <div className="detail-container">

@@ -1,6 +1,7 @@
 /* ProductAll.css */
 .container {
   width: 80vw;
+  max-width: 1300px;
   margin: auto;
   /* border: 1px solid red; */
   margin-top: 30px;
@@ -21,6 +22,32 @@
   margin: auto;
 }
 
+.no-products {
+  text-align: center;
+  padding: 50px 0;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-products h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.no-products p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.not-found-image {
+  width: 40vw;
+  max-width: 550px; /* 이미지 크기 조절, 필요에 따라 수정 */
+  margin-bottom: 20px;
+}
+
 /* Mobile media query */
 @media (max-width: 768px) {
   .row{
@@ -29,5 +56,8 @@
   .col {
     flex: 0 0 100%;
     padding: 5px; 
+  }
+  .not-found-image {
+    width: 70vw;
   }
 }

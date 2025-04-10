@@ -9,7 +9,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
 
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
 
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const handleAuthClick = () => {
@@ -30,11 +29,13 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   };
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
-      setSearchQuery('');
+    if(e.key === "Enter") {
+      let keyword = e.target.value;
+    if (keyword.trim()) {
+      navigate(`/?q=${keyword}`);
       setIsMenuOpen(false);
+    }
+    e.target.value='';
     }
   };
 
@@ -78,8 +79,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <div className="search-area">
             <FontAwesomeIcon icon={faSearch} />
             <input type="text" placeholder="제품 검색" 
-            value={searchQuery}
-            onChange={handleSearch}
+            onKeyUp={(event) => handleSearch(event)}
             />
           </div>
         </div>

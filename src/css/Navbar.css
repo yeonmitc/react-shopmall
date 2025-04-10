@@ -1,5 +1,7 @@
 .navbar {
   width: 100%;
+  max-width: 1300px;
+  margin: auto;
   font-family: Arial, sans-serif;
 }
 .login-banner{
