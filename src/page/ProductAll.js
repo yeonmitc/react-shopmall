@@ -4,9 +4,11 @@ import '../css/ProductAll.css'
 import NotFoundImage from '../img/notfound.png';
 import { useSearchParams } from 'react-router-dom';  // 쿼리를 
 const ProductAll = ({authenticate}) => {
+    const [loading, setLoading] =useState(false)
   const [productList, setProductList] = useState([]);
   const [query, setQuery] = useSearchParams();
   const getProducts = async () => {
+
     let searchQuery = query.get("q") || "";
     console.log("q : ", searchQuery);
     let url = `https://my-json-server.typicode.com/yeonmitc/jsondb/products?q=${searchQuery}`
@@ -14,6 +16,7 @@ const ProductAll = ({authenticate}) => {
     let data = await response.json();
     console.log('data=' , data.length);
     setProductList(data);
+    setLoading(true);
   };
 
   useEffect (() => {
@@ -23,7 +26,7 @@ const ProductAll = ({authenticate}) => {
 
 
 // 상품이 없을 때 보여줄 컴포넌트
-if (productList.length === 0) {
+if (loading && productList.length === 0) {
   return (
     <div className='container'>
       <div className='no-products'>
@@ -37,10 +40,12 @@ if (productList.length === 0) {
       </div>
     </div>
   );
+  
 }
 
 
   return (
+    <>{!loading ? <div className="spinner"></div> :
       <div className='container'>
         <div className='row'>
           {productList.map((menu) => (
@@ -50,7 +55,7 @@ if (productList.length === 0) {
           ))}
         </div>
       </div>
-
+    }</>
   )
 }
 
